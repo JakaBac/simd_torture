@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <fcntl.h>
+#include <stdint.h>
 #include <sys/types.h>
 #include <sys/mman.h>
 #include <immintrin.h>
@@ -8,12 +9,12 @@
 #define MAP_SIZE 4096UL
 #define MAP_MASK (MAP_SIZE - 1)
 
-unsigned long junk[] = {0xbaad00de, 0xbaadf00d, 0xdeaddead, 0xcafebabe,
+uint32_t junk[] = {0xbaad00de, 0xbaadf00d, 0xdeaddead, 0xcafebabe,
                         0x55555555, 0x66666666, 0x77777777, 0x88888888,
                         0x99999999, 0xaaaaaaaa, 0xbbbbbbbb, 0xcccccccc,
                         0xdddddddd, 0xeeeeeeee, 0xffffffff, 0xfeedface};
 
-unsigned char *virt_addr;
+uint8_t *virt_addr;
 
 void torture_write_128bit()
 {
@@ -99,7 +100,7 @@ void torture_read_512bit()
 int main(int argc, char **argv)
 {
     int fd;
-    unsigned char *map_base;
+    uint8_t *map_base;
     off_t target;
     char op = 'w';
     char kind = '1';
