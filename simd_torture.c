@@ -104,7 +104,7 @@ int main(int argc, char **argv)
     char op = 'w';
     char kind = '1';
 
-    if (argc != 3)
+    if (argc != 4)
     {
         fprintf(stderr, "\nUsage:\t%s 0xaddress r|w instruction_kind\n"
                         "\tinstruction_kind    : 1 - 128bit, 2 - 256bit, 3 - 512bit\n",
