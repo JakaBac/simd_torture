@@ -18,7 +18,7 @@ uint8_t *virt_addr;
 
 void torture_write_128bit()
 {
-    asm("vmovdqa %1,%%xmm0\n\t"
+    asm("vmovdqu %1,%%xmm0\n\t"
         "xorq %%rax,%%rax\n\t"
         "torture_loop%=:\n\t"
         "vmovdqu %%xmm0,(%0)\n\t"
@@ -45,7 +45,7 @@ void torture_read_128bit()
 
 void torture_write_256bit()
 {
-    asm("vmovdqa %1,%%ymm0\n\t"
+    asm("vmovdqu %1,%%ymm0\n\t"
         "xorq %%rax,%%rax\n\t"
         "torture_loop%=:\n\t"
         "vmovdqu %%ymm0,(%0)\n\t"
@@ -72,7 +72,7 @@ void torture_read_256bit()
 
 void torture_write_512bit()
 {
-    asm("vmovdqa64 %1,%%zmm0\n\t"
+    asm("vmovdqu64 %1,%%zmm0\n\t"
         "xorq %%rax,%%rax\n\t"
         "torture_loop%=:\n\t"
         "vmovdqu64 %%zmm0,(%0)\n\t"
